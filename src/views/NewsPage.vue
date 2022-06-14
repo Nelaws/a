@@ -1,10 +1,10 @@
 <template>
-$END$
+<h1>wewewewewewerwe</h1>
 </template>
 
 <script>
 export default {
-name: "NewsPage"
+  name: "NewsPage"
 }
 </script>
 
