@@ -11,7 +11,18 @@
 
 <script>
 export default {
-  name: "SignInView"
+  name: "SignInView",
+  // data() {
+  //   return {
+  //     name: null,
+  //     email: null,
+  //     password: null
+  //   }
+  // },
+  // mounted() {
+  //   axios
+  //   .get('')
+  // }
 }
 </script>
 
@@ -20,7 +31,6 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 300px;
 }
 form input {
   height: 20px;

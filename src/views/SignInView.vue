@@ -20,7 +20,6 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 300px;
 }
 form input {
   height: 20px;

@@ -2,7 +2,7 @@
   <div id="app">
     <div class="headerPage">
         <div class="NameSite">
-          <router-link to="/"><h2>NOVOSTNOI SAIT</h2></router-link>
+          <router-link to="/"><h2>NewsToday</h2></router-link>
         </div>
         <nav class="authPage">
           <router-link to="/sign_in">Sign in</router-link> |
