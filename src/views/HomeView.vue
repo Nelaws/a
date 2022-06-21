@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div
-        v-for="post in posts" class="home">
-      <router-link to="/news_page">{{post.name}}
-      </router-link>
+    <div v-for="post in posts" class="home">
+      <span @click="goTo(post.id)">
+        {{ post.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -14,13 +14,14 @@ import axios from 'axios'
 
 export default {
   name: 'HomeView',
-  data () {
+  data() {
     return {
       posts: [
         {
           name: null,
           description: null,
-          created_at: null
+          created_at: null,
+          id: null
         }
       ]
     };
@@ -29,6 +30,13 @@ export default {
     await axios.get('http://127.0.0.1:8000/api/posts')
         .then(response => (this.posts = response.data));
 
+  },
+  methods: {
+    goTo(id) {
+      this.$router.push({
+        path: `/news_page/${id}`
+      })
+    }
   }
 }
 </script>
@@ -40,12 +48,12 @@ export default {
   align-items: center;
 }
 
-.home a {
+.home span {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 20px;
-  width: 200px;
+  width: auto;
 }
 </style>

@@ -1,28 +1,33 @@
 <template>
   <div>
-    <form>
       <h2>Регистрация аккаунта</h2>
-      <input type="text" placeholder="Логин">
-      <input type="password" placeholder="Пароль">
-      <button type="submit">Войти</button>
-    </form>
+      <form v-if="!isName" v-on:submit="isName=true">
+        <input type="text" v-model="name" placeholder="Введите имя">
+        <input type="email" v-model="email" placeholder="Введите почту">
+        <input type="password" v-model="password" placeholder="Введите пароль">
+        <button type="submit">Регистрация</button>
+      </form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SignInView",
-  // data() {
-  //   return {
-  //     name: null,
-  //     email: null,
-  //     password: null
-  //   }
-  // },
-  // mounted() {
-  //   axios
-  //   .get('')
-  // }
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      isName: false
+    }
+  },
+  async mounted() {
+    await axios.post('http://127.0.0.1:8000/api/register')
+        .then(response => (this.users = response));
+
+  }
 }
 </script>
 

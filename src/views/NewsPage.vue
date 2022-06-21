@@ -1,17 +1,45 @@
 <template>
-<h1>Бывший полузащитник московского ЦСКА Никола Влашич может покинуть лондонский «Вест Хэм», которому принадлежат права на хорватского игрока, сообщает Dalmatinskiportal.hr.
-
-  Влашич может вернуться в «Хайдук», который рассматривает вариант с арендой 24-летнего хавбека. Никола находился в системе хорватского клуба с 2010 по 2017 год. Также полузащитником интересуется итальянский «Торино».
-
-  Влашич перешел в «Вест Хэм» летом 2021 года. В прошлом сезоне футболист провел за команду 31 матч во всех турнирах, забил один мяч.</h1>
+  <div class="Posts">
+    <h3>{{post.name}}</h3>
+    <span>{{post.description}}</span>
+    <h4>Комментарии:</h4>
+    <CommentPost :comments="post.lists"/>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
+import CommentPost from "@/views/CommentPost";
+
 export default {
-  name: "NewsPage"
+  name: "NewsPage",
+  components: {CommentPost},
+  data() {
+    return {
+      post: {
+        created_at: undefined,
+        description: undefined,
+        id: undefined,
+        name: undefined,
+        updated_at: undefined
+      },
+      comments: [
+        {
+          comment: null
+        }
+      ]
+    };
+  },
+  async mounted() {
+    await axios.get(`http://127.0.0.1:8000/api/posts/${this.$route.params.id}`)
+        .then(response => (this.post = response.data.data));
+  }
 }
 </script>
 
 <style scoped>
-
+.Posts {
+  display: flex;
+  flex-direction: column;
+}
 </style>

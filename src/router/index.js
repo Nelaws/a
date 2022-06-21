@@ -35,8 +35,8 @@ const routes = [
     }
   },
   {
-    path: '/news_page',
-    name: 'name',
+    path: '/news_page/:id',
+    name: 'news_page',
     component: function () {
       return import( '../views/NewsPage')
     }
